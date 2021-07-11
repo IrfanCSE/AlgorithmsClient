@@ -76,6 +76,11 @@
   height: 40px;
   position: absolute;
   z-index: 2;
+  color: silver;
+
+  &:focus {
+    box-shadow: none;
+  }
 }
 
 .hm_btn {
@@ -85,6 +90,11 @@
   height: 40px;
   position: absolute;
   z-index: 2;
+  color: skyblue;
+
+  &:focus {
+    box-shadow: none;
+  }
 }
 
 @media only screen and (max-width: 720px) {
