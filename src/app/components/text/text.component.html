@@ -5,14 +5,14 @@
     <h1 class="text-center text-uppercase">Encryption</h1>
     <button (click)="toggle()" class="btn dyc_btn text-uppercase">Decryption</button>
     <a routerLink="/" class="btn hm_btn text-uppercase">Home</a>
-    <form class="col-12">
+    <form class="col-12" (ngSubmit)="onSubmit(msg.value,key.value)">
       <div class=" d-flex flex-row align-items-center m-3">
         <label class="label_text form-label m-2">Text</label>
-        <textarea class="form-control"></textarea>
+        <textarea class="form-control" #msg></textarea>
       </div>
       <div class="d-flex flex-row m-3 align-items-center">
         <label class="label_text form-label m-2">Key</label>
-        <input class="form-control" type="text">
+        <input class="form-control" type="text" #key>
       </div>
       <button class="btn btn-outline-dark btn_pos" type="submit">Encrypt</button>
     </form>
@@ -21,7 +21,7 @@
         <!-- <hr> -->
         <label class="form-label m-2">Encrypted</label>
         <hr>
-        <textarea readonly class="form-control-plaintext encrypt_area"></textarea>
+        <textarea readonly class="form-control-plaintext encrypt_area" [value]="encryptText"></textarea>
       </div>
     </div>
   </div>
@@ -33,14 +33,14 @@
     <h1 class="text-center text-uppercase">Decryption</h1>
     <button class="btn dyc_btn text-uppercase" (click)="toggle()">Encryption</button>
     <a routerLink="/" class="btn hm_btn text-uppercase">Home</a>
-    <form class="col-12">
+    <form class="col-12" (ngSubmit)="onSubmitD(dmsg.value,dkey.value)">
       <div class=" d-flex flex-row align-items-center m-3">
         <label class="label_text form-label m-2">Text</label>
-        <textarea class="form-control"></textarea>
+        <textarea class="form-control" #dmsg></textarea>
       </div>
       <div class="d-flex flex-row m-3 align-items-center">
         <label class="label_text form-label m-2">Key</label>
-        <input class="form-control" type="text">
+        <input class="form-control" type="text" #dkey>
       </div>
       <button class="btn btn-outline-dark btn_pos" type="submit">Decrypt</button>
     </form>
@@ -49,7 +49,7 @@
         <!-- <hr> -->
         <label class="form-label m-2">Decrypted</label>
         <hr>
-        <textarea readonly class="form-control-plaintext encrypt_area"></textarea>
+        <textarea readonly class="form-control-plaintext encrypt_area" [value]="decryptText"></textarea>
       </div>
     </div>
   </div>
