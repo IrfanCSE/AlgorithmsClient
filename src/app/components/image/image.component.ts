@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
 import { ServiceService } from "src/app/service/service.service";
+import * as fileSaver from "file-saver";
+import { v4 as uuid } from "uuid";
 
 @Component({
   selector: "app-image",
@@ -9,8 +12,16 @@ import { ServiceService } from "src/app/service/service.service";
 export class ImageComponent implements OnInit {
   encrypt: boolean = true;
   selectedImg: string = null;
+  public files: any[];
+  previewImg: any;
+  previewDImg: any;
+  isPreviewImg: boolean = false;
+  isPreviewDImg: boolean = false;
 
-  constructor(private service: ServiceService) {}
+  constructor(
+    private service: ServiceService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {}
 
@@ -18,13 +29,22 @@ export class ImageComponent implements OnInit {
     this.encrypt = !this.encrypt;
   };
 
-  onSubmit = (files: FileList, key: string) => {
-    const file = files.item(0);
-    console.log("img api call")
- 
-    this.service.imgEncryption(file, key).subscribe(
+  onSubmit = (key: string) => {
+    const formData = new FormData();
+    for (const file of this.files) {
+      formData.append("file", file, file.name);
+    }
+
+    console.log(formData);
+
+    this.service.imgEncryption(formData, key).subscribe(
       (res) => {
+        this.previewImg = this.blobToImage(res);
+        this.isPreviewImg = true;
         console.log(res);
+        const name = uuid();
+        fileSaver.saveAs(res, name);
+        console.log(this.previewImg);
       },
       (err) => {
         console.log(err);
@@ -32,10 +52,18 @@ export class ImageComponent implements OnInit {
     );
   };
 
-  onSubmitD = (image: any, key: string) => {
-    this.service.imgEncryption(image, key).subscribe(
+  onSubmitD = (key: string) => {
+    const formData = new FormData();
+    for (const file of this.files) {
+      formData.append("file", file, file.name);
+    }
+
+    this.service.imgDecryption(formData, key).subscribe(
       (res) => {
-        console.log(res);
+        this.previewDImg = this.blobToImage(res);
+        this.isPreviewDImg = true;
+        const name = uuid();
+        fileSaver.saveAs(res, name);
       },
       (err) => {
         console.log(err);
@@ -43,18 +71,16 @@ export class ImageComponent implements OnInit {
     );
   };
 
-  onChangeImg = (files: any) => {
-    // const file = files.item(0);
-    this.selectedImg = files;
-    console.log(files);
+  blobToImage = (res: any) => {
+    let blob = new Blob([res], { type: "image/jpeg" });
+    let objectURL = URL.createObjectURL(blob);
+    return this.sanitizer.bypassSecurityTrustUrl(objectURL);
   };
 
-  // upload(files: FileList) {
-  //   const file = files.item(0);
-
-  //   this.filesService.upload(file).subscribe(
-  //     res => /* Place your success actions here */,
-  //     error => /* Place your error actions here */
-  //   );
-  // }
+  onChangeImg = (event: any) => {
+    console.log(event);
+    this.files = null;
+    this.files = event.target.files;
+    console.log(this.files);
+  };
 }
