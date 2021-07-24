@@ -1,42 +1,66 @@
 <div class="main" [hidden]="!encrypt">
   <img class="bg_img" src="../../../assets/aes_wall.jpg">
-  <div class="glass">
+  <img class="home_img_mobile" src="../../../assets/mobile_aes.jpeg">
+  <div class="glass"></div>
+  <div class="middleInfo">
     <h1 class="text-center text-uppercase">Encryption</h1>
     <button (click)="toggle()" class="btn dyc_btn text-uppercase">Decryption</button>
     <a routerLink="/" class="btn hm_btn text-uppercase">Home</a>
     <form class="col-12" (ngSubmit)="onSubmit(key.value)">
-      <!-- <div class=" d-flex flex-row align-items-center m-3">
-        <label class="label_text form-label m-2">Text</label>
-        <textarea class="form-control"></textarea>
-      </div> -->
       <div class="d-flex flex-row m-3 align-items-center">
         <label class="label_text form-label m-2">Key</label>
         <input class="form-control" type="text" #key>
       </div>
-      <div class="d-flex flex-row m-3 align-items-center">
-        <label class="label_text form-label m-2">Image</label>
-        <input type="file" #file (change)="onChangeImg($event)">
+      <div class="mobile_file">
+        <div>
+          <input class="mob_file" type="file" #file (change)="onChangeImg($event)">
+        </div>
+        <div>
+          <button class="btn btn-outline-dark btn_pos" type="submit">Encrypt</button>
+        </div>
       </div>
-      <button class="btn btn-outline-dark btn_pos" type="submit">Encrypt</button>
     </form>
-    <div class="mt-4" [hidden]="selectedImg==null">
-      <div class="m-2 align-items-center">
-        <label class="form-label m-2">Preview</label>
-        <img [src]="selectedImg">
-      </div>
+
+    <div>
+      <img [hidden]="!encrypting" src="https://media.giphy.com/media/feN0YJbVs0fwA/giphy.gif" class="encryptImg">
+      <img [hidden]="imgURL==null" [src]="imgURL" class="previewImg">
     </div>
-    <div class="mt-4">
-      <div class="m-2 align-items-center">
-        <!-- <hr> -->
-        <label class="form-label m-2">Encrypted</label>
-        <hr>
-        <img [src]="previewDImg" style="height: 411px;">
-      </div>
-    </div>
+    
   </div>
 </div>
 
 <div class="main" [hidden]="encrypt">
+  <img class="bg_img" src="../../../assets/aes_wall.jpg">
+  <img class="home_img_mobile" src="../../../assets/mobile_aes.jpeg">
+  <div class="glass"></div>
+  <div class="middleInfo">
+    <h1 class="text-center text-uppercase">Decryption</h1>
+    <button (click)="toggle()" class="btn dyc_btn text-uppercase">Encryption</button>
+    <a routerLink="/" class="btn hm_btn text-uppercase">Home</a>
+    <form class="col-12" (ngSubmit)="onSubmitD(keyD.value)">
+      <div class="d-flex flex-row m-3 align-items-center">
+        <label class="label_text form-label m-2">Key</label>
+        <input class="form-control" type="text" #keyD>
+      </div>
+      <div class="mobile_file">
+        <div>
+          <input type="file" #file (change)="onChangeImg($event)">
+        </div>
+        <div>
+          <button class="btn btn-outline-dark btn_pos" type="submit">Decrypt</button>
+        </div>
+      </div>
+    </form>
+
+    <div>
+      <img [hidden]="!encrypting" src="https://media.giphy.com/media/feN0YJbVs0fwA/giphy.gif" class="encryptImg">
+      <img [hidden]="previewDImg==null" [src]="previewDImg" class="previewDImg">
+    </div>
+    
+  </div>
+</div>
+
+<!-- <div class="main" [hidden]="encrypt">
   <img class="bg_img" src="../../../assets/aes_wall.jpg">
   <div class="glass">
     <h1 class="text-center text-uppercase">Decryption</h1>
@@ -53,13 +77,11 @@
       </div>
       <button class="btn btn-outline-dark btn_pos" type="submit">Decrypt</button>
     </form>
-    <div class="mt-4">
-      <div class="m-2 align-items-center">
-        <!-- <hr> -->
-        <label class="form-label m-2">Decrypted</label>
-        <hr>
-        <img [src]="previewDImg" style="height: 411px;">
-      </div>
+
+    <div>
+      <img [hidden]="!encrypting" src="https://media.giphy.com/media/feN0YJbVs0fwA/giphy.gif" class="encryptImg">
+      <img [hidden]="imgURL==null" [src]="previewDImg" class="previewImg">
     </div>
+
   </div>
-</div>
+</div> -->
