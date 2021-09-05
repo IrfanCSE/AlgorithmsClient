@@ -25,7 +25,7 @@ export class ServiceService {
 
   imgEncryption = (image: any, key: string) => {
     const head = new HttpHeaders();
-    head.set("content-type", "image/png");
+    head.set("content-type", "multipart/form-data");
 
     return this.http.post(
       `${this.baseUrl}/api/Algorithm/EncryptionImage?key=${key}`,

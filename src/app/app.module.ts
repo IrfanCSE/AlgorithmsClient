@@ -8,9 +8,10 @@ import { AppComponent } from "./app.component";
 import { HomeComponent } from "./components/home/home.component";
 import { TextComponent } from "./components/text/text.component";
 import { ImageComponent } from "./components/image/image.component";
+import { FileComponent } from "./components/file/file.component";
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TextComponent, ImageComponent],
+  declarations: [AppComponent, HomeComponent, TextComponent, ImageComponent,FileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

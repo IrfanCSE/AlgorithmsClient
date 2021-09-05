@@ -1,0 +1,63 @@
+<div class="main" [hidden]="!encrypt">
+  <img class="bg_img" src="../../../assets/aes_wall.jpg">
+  <div class="glass">
+    <h1 class="text-center text-uppercase">Encryption</h1>
+    <button (click)="toggle()" class="btn dyc_btn text-uppercase">Decryption</button>
+    <a routerLink="/" class="btn hm_btn text-uppercase">Home</a>
+    <form class="col-12" (ngSubmit)="onSubmit(key.value)">
+      <!-- <div class=" d-flex flex-row align-items-center m-3">
+        <label class="label_text form-label m-2">Text</label>
+        <textarea class="form-control"></textarea>
+      </div> -->
+      <div class="d-flex flex-row m-3 align-items-center">
+        <label class="label_text form-label m-2">Key</label>
+        <input class="form-control" type="text" #key>
+      </div>
+      <div class="d-flex flex-row m-3 align-items-center">
+        <label class="label_text form-label m-2">File</label>
+        <input type="file" #file (change)="onChangeImg($event)">
+      </div>
+      <button class="btn btn-outline-dark btn_pos" type="submit">Encrypt</button>
+    </form>
+    <!-- <div class="mt-4" [hidden]="selectedImg==null">
+      <div class="m-2 align-items-center">
+        <label class="form-label m-2">Preview</label>
+        <img [src]="selectedImg">
+      </div>
+    </div> -->
+    <!-- <div class="mt-4">
+      <div class="m-2 align-items-center">
+        <label class="form-label m-2">Encrypted</label>
+        <hr>
+        <img [src]="previewDImg" style="height: 411px;">
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<div class="main" [hidden]="encrypt">
+  <img class="bg_img" src="../../../assets/aes_wall.jpg">
+  <div class="glass">
+    <h1 class="text-center text-uppercase">Decryption</h1>
+    <button class="btn btn-outline-danger dyc_btn text-uppercase" (click)="toggle()">Encryption</button>
+    <a routerLink="/" class="btn btn-outline-danger hm_btn text-uppercase">Home</a>
+    <form class="col-12" (ngSubmit)="onSubmitD(keyD.value)">
+      <div class="d-flex flex-row m-3 align-items-center">
+        <label class="label_text form-label m-2">Key</label>
+        <input class="form-control" type="text" #keyD>
+      </div>
+      <div class="d-flex flex-row m-3 align-items-center">
+        <label class="label_text form-label m-2">File</label>
+        <input type="file" #file (change)="onChangeImg($event)">
+      </div>
+      <button class="btn btn-outline-dark btn_pos" type="submit">Decrypt</button>
+    </form>
+    <!-- <div class="mt-4">
+      <div class="m-2 align-items-center">
+        <label class="form-label m-2">Decrypted</label>
+        <hr>
+        <img [src]="previewDImg" style="height: 411px;">
+      </div>
+    </div> -->
+  </div>
+</div>

@@ -5,11 +5,12 @@ import * as fileSaver from "file-saver";
 import { v4 as uuid } from "uuid";
 
 @Component({
-  selector: "app-image",
-  templateUrl: "./image.component.html",
-  styleUrls: ["./image.component.scss"],
+  selector: 'app-file',
+  templateUrl: './file.component.html',
+  styleUrls: ['./file.component.scss']
 })
-export class ImageComponent implements OnInit {
+export class FileComponent implements OnInit {
+
   encrypt: boolean = true;
   selectedImg: string = null;
   public files: any[];
@@ -83,4 +84,5 @@ export class ImageComponent implements OnInit {
     this.files = event.target.files;
     console.log(this.files);
   };
+
 }
