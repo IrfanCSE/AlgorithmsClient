@@ -1,6 +1,8 @@
 
 <div class="main" [hidden]="!encrypt">
   <img class="bg_img" src="../../../assets/aes_wall.jpg">
+  <img class="home_img_mobile" src="../../../assets/mobile_aes.jpeg">
+
   <div class="glass">
     <h1 class="text-center text-uppercase">Encryption</h1>
     <button (click)="toggle()" class="btn dyc_btn text-uppercase">Decryption</button>
@@ -29,6 +31,8 @@
 
 <div class="main" [hidden]="encrypt">
   <img class="bg_img" src="../../../assets/aes_wall.jpg">
+  <img class="home_img_mobile" src="../../../assets/mobile_aes.jpeg">
+
   <div class="glass">
     <h1 class="text-center text-uppercase">Decryption</h1>
     <button class="btn dyc_btn text-uppercase" (click)="toggle()">Encryption</button>
