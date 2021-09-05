@@ -18,6 +18,10 @@ export class FileComponent implements OnInit {
   previewDImg: any;
   isPreviewImg: boolean = false;
   isPreviewDImg: boolean = false;
+  encrypting: boolean = false;
+
+  // imagePath: any;
+  imgURL: any;
 
   constructor(
     private service: ServiceService,
@@ -28,6 +32,8 @@ export class FileComponent implements OnInit {
 
   toggle = () => {
     this.encrypt = !this.encrypt;
+    this.previewDImg = null;
+    this.imgURL = null;
   };
 
   onSubmit = (key: string) => {
@@ -38,6 +44,9 @@ export class FileComponent implements OnInit {
 
     console.log(formData);
 
+    this.encrypting = true;
+    this.imgURL = null;
+
     this.service.imgEncryption(formData, key).subscribe(
       (res) => {
         this.previewImg = this.blobToImage(res);
@@ -46,9 +55,13 @@ export class FileComponent implements OnInit {
         const name = uuid();
         fileSaver.saveAs(res, name);
         console.log(this.previewImg);
+        this.encrypting = false;
+        this.imgURL = "../../../assets/aes_done.png";
       },
       (err) => {
         console.log(err);
+        this.imgURL = "../../../assets/error.png";
+        this.encrypting = false;
       }
     );
   };
@@ -59,15 +72,24 @@ export class FileComponent implements OnInit {
       formData.append("file", file, file.name);
     }
 
+    this.encrypting = true;
+    this.previewDImg = null;
+
     this.service.imgDecryption(formData, key).subscribe(
       (res) => {
         this.previewDImg = this.blobToImage(res);
         this.isPreviewDImg = true;
         const name = uuid();
+        window.open(this.previewDImg.changingThisBreaksApplicationSecurity);
+        console.log(this.previewDImg);
         fileSaver.saveAs(res, name);
+        this.encrypting = false;
+        // this.previewDImg = "../../../assets/aes_done.png";
       },
       (err) => {
         console.log(err);
+        this.previewDImg = "../../../assets/error.png";
+        this.encrypting = false;
       }
     );
   };
@@ -80,9 +102,18 @@ export class FileComponent implements OnInit {
 
   onChangeImg = (event: any) => {
     console.log(event);
-    this.files = null;
     this.files = event.target.files;
-    console.log(this.files);
+
+    this.setpreviewImg();
+  };
+
+  setpreviewImg = () => {
+    var reader = new FileReader();
+    // this.imagePath = this.files;
+    reader.readAsDataURL(this.files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    };
   };
 
 }

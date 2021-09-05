@@ -1,31 +1,180 @@
 * {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
-  
-  .back_btn {
-    position: relative;
-    left: 80vw;
-    left: 80vw;
-    top: 0%;
-    width: 20vh;
-    max-width: 100px;
-    border-radius: 2em;
-    box-shadow: 0px 5px whitesmoke;
-    margin-bottom: 5vh;
-  }
-  
-  .encrypt_area {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.back_btn {
+  position: relative;
+  left: 80vw;
+  left: 80vw;
+  top: 0%;
+  width: 20vh;
+  max-width: 100px;
+  border-radius: 2em;
+  box-shadow: 0px 5px whitesmoke;
+  margin-bottom: 5vh;
+}
+
+.mobile_file{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.encrypt_area {
+  border: none;
+
+  &:focus-visible {
     border: none;
-  
-    &:focus-visible {
-      border: none;
-      border-radius: 2em;
-    }
+    border-radius: 2em;
   }
-  
+}
+
+.bg_img {
+  // background-image: url('../../../assets/aes_wall.jpg');
+  filter: blur(5px);
+  -webkit-filter: blur(8px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: block;
+}
+
+.home_img_mobile {
+  display: none;
+}
+
+.main {
+  position: relative;
+  height: 100%;
+  // background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glass {
+  z-index: 2;
+  // display: flex;
+  position: absolute;
+  height: 80vh;
+  width: 70%;
+  background-color: white;
+  opacity: .7;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+// .file-input {
+//   border: none;
+//   display: inline-block;
+//   // padding: 6px 12px;
+//   cursor: pointer;
+// }
+
+.previewImg {
+  position: absolute;
+  width: 270px;
+  // height: auto;
+  object-fit: contain;
+  bottom: 5vh;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 5px;
+}
+
+.previewDImg {
+  position: absolute;
+  width: 270px;
+  // height: auto;
+  object-fit: contain;
+  bottom: 4vh;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 5px;
+}
+
+.encryptImg {
+  position: absolute;
+  width: 300px;
+  // height: 300px;
+  object-fit: contain;
+  bottom: 4vh;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 5px;
+  // z-index: 5;
+}
+
+.middleInfo {
+  z-index: 2;
+  // display: flex;
+  position: absolute;
+  height: 80vh;
+  width: 70%;
+  // background-color: white;
+  // opacity: .7;
+  border-radius: 20px;
+  padding: 5px;
+
+}
+
+.label_text {
+  width: 10%;
+  height: 3vh;
+}
+
+.btn_pos {
+  position: relative;
+  left: 50%;
+  top: 20px;
+  transform: translate(-50%, -50%);
+}
+
+.dyc_btn {
+  top: 2%;
+  right: 3%;
+  width: auto;
+  height: 40px;
+  position: absolute;
+  z-index: 2;
+  color: white;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.hm_btn {
+  top: 2%;
+  left: 3%;
+  width: auto;
+  height: 40px;
+  position: absolute;
+  z-index: 2;
+  color: blue;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  * {
+    // font-size: .7rem;
+    // margin: 0px;
+    // padding: 0px;
+    color: white;
+  }
+
   .bg_img {
-    // background-image: url('../../../assets/aes_wall.jpg');
+    display: none;
+  }
+
+  .home_img_mobile {
     filter: blur(5px);
     -webkit-filter: blur(8px);
     background-position: center;
@@ -33,94 +182,90 @@
     background-size: cover;
     width: 100%;
     height: 100vh;
+    display: block;
   }
-  
-  .main {
-    position: relative;
-    height: 100vh;
-    // background-color: black;
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+
   .glass {
     z-index: 2;
-    // display: flex;
-    position: absolute;
-    height: 80vh;
-    width: 70%;
-    background-color: white;
-    opacity: .7;
-    border-radius: 20px;
-    padding: 5px;
+  // display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  opacity: .0;
+  border-radius: 0px;
+  padding: 0px;
   }
-  
+
+  .dyc_btn {
+    top: -5vh;
+    right: 40%;
+    color: white;
+    width: 15vw;
+    height: 30px;
+    border: none;
+    font-size: 1rem;
+    position: absolute;
+    z-index: 2;  }
+
+  .hm_btn {
+    left: 10%;
+    top: -5vh;
+    color: white;
+    width: 15vw;
+    height: 30px;
+    border: none;
+    font-size: 1rem;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .previewDImg {
+    position: absolute;
+    width: 70%;
+    // height: auto;
+    object-fit: contain;
+    bottom: 3vh;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 5px;
+  }
+
+  .previewImg {
+    position: absolute;
+    width: 70%;
+    // height: auto;
+    object-fit: contain;
+    bottom: 5vh;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 5px;
+  }
+
+  .encryptImg {
+    position: absolute;
+    width: 50%;
+    // height: 300px;
+    object-fit: contain;
+    bottom: 5vh;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 5px;
+    z-index: 5;
+  }
+  .mobile_file{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
   .label_text {
-    width: 10%;
+    width: 12%;
     height: 3vh;
   }
-  
-  .btn_pos {
+  .mob_file{
     position: relative;
     left: 50%;
-    top: 20px;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%);
   }
-  
-  .dyc_btn {
-    top: 2%;
-    right: 3%;
-    width: auto;
-    height: 40px;
-    position: absolute;
-    z-index: 2;
-    color: silver;
-  
-    &:focus {
-      box-shadow: none;
-    }
-  }
-  
-  .hm_btn {
-    top: 2%;
-    left: 3%;
-    width: auto;
-    height: 40px;
-    position: absolute;
-    z-index: 2;
-    color: skyblue;
-  
-    &:focus {
-      box-shadow: none;
-    }
-  }
-  
-  @media only screen and (max-width: 720px) {
-    * {
-      font-size: .7rem;
-    }
-  
-    .dyc_btn {
-      right: 3vw;
-      top: 36vh;
-      width: auto;
-      height: 30px;
-      font-size: .7rem;
-      border: none;
-      position: absolute;
-      z-index: 2;
-    }
-  
-    .hm_btn {
-      // right: 5vw;
-      top: 0vh;
-      width: 15vw;
-      height: 30px;
-      border: none;
-      font-size: .7rem;
-      position: absolute;
-      z-index: 2;
-    }
-  }
+}
