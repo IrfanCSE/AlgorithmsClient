@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url: "https://localhost:5001"
+  url: "https://aesalgo.azurewebsites.net"
+  // url: "https://localhost:5001"
 };
 
 /*
