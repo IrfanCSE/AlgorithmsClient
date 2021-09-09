@@ -29,6 +29,9 @@ export class TextComponent implements OnInit {
     } else if (!this.reg.test(key)) {
       this.error = true;
       this.errorText = "error:: only numeric allow";
+    } else if (message.length == 0) {
+      this.error = true;
+      this.errorText = "error:: empty message";
     } else {
       this.error = false;
       this.service.msgEncryption(message, key).subscribe(
@@ -50,6 +53,9 @@ export class TextComponent implements OnInit {
     } else if (!this.reg.test(key)) {
       this.error = true;
       this.errorText = "error:: only numeric allow";
+    } else if (message.length == 0) {
+      this.error = true;
+      this.errorText = "error:: empty message";
     } else {
       this.error = false;
 
