@@ -20,6 +20,8 @@
         </div>
       </div>
     </form>
+    
+    <div [hidden]="!error"><span [hidden]="!error" style="color: red;">{{errorText}}</span></div>
 
     <div>
       <img [hidden]="!encrypting" src="https://media.giphy.com/media/feN0YJbVs0fwA/giphy.gif" class="encryptImg">
@@ -51,6 +53,8 @@
         </div>
       </div>
     </form>
+   
+    <div [hidden]="!error"><span [hidden]="!error" style="color: red;">{{errorText}}</span></div>
 
     <div>
       <img [hidden]="!encrypting" src="https://media.giphy.com/media/feN0YJbVs0fwA/giphy.gif" class="encryptImg">

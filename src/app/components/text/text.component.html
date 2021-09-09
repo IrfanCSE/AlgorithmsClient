@@ -10,14 +10,15 @@
     <form class="col-12" (ngSubmit)="onSubmit(msg.value,key.value)">
       <div class=" d-flex flex-row align-items-center m-3">
         <label class="label_text form-label m-2">Text</label>
-        <textarea class="form-control" #msg></textarea>
+        <textarea placeholder="enter your text here" class="form-control" #msg></textarea>
       </div>
       <div class="d-flex flex-row m-3 align-items-center">
         <label class="label_text form-label m-2">Key</label>
-        <input class="form-control" type="text" #key>
+        <input placeholder="your secret key" class="form-control" type="text" #key>
       </div>
       <button class="btn btn-outline-dark btn_pos" type="submit">Encrypt</button>
     </form>
+    <div [hidden]="!error"><span [hidden]="!error" style="color: red;">{{errorText}}</span></div>
     <div class="mt-4">
       <div class="m-2 align-items-center">
         <!-- <hr> -->
@@ -48,6 +49,7 @@
       </div>
       <button class="btn btn-outline-dark btn_pos" type="submit">Decrypt</button>
     </form>
+    <div [hidden]="!error"><span [hidden]="!error" style="color: red;">{{errorText}}</span></div>
     <div class="mt-4">
       <div class="m-2 align-items-center">
         <!-- <hr> -->
