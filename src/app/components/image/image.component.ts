@@ -37,8 +37,10 @@ export class ImageComponent implements OnInit {
 
   onSubmit = (key: string) => {
     const formData = new FormData();
+    let fileName: any;
     for (const file of this.files) {
       formData.append("file", file, file.name);
+      fileName = file.name;
     }
 
     console.log(formData);
@@ -51,8 +53,8 @@ export class ImageComponent implements OnInit {
         this.previewImg = this.blobToImage(res);
         this.isPreviewImg = true;
         console.log(res);
-        const name = uuid();
-        fileSaver.saveAs(res, name);
+        // const name = uuid();
+        fileSaver.saveAs(res, fileName);
         console.log(this.previewImg);
         this.encrypting = false;
         this.imgURL = "../../../assets/aes_done.png";
@@ -67,8 +69,10 @@ export class ImageComponent implements OnInit {
 
   onSubmitD = (key: string) => {
     const formData = new FormData();
+    let fileName: any;
     for (const file of this.files) {
       formData.append("file", file, file.name);
+      fileName = file.name;
     }
 
     this.encrypting = true;
@@ -78,10 +82,10 @@ export class ImageComponent implements OnInit {
       (res) => {
         this.previewDImg = this.blobToImage(res);
         this.isPreviewDImg = true;
-        const name = uuid();
+        // const name = uuid();
         window.open(this.previewDImg.changingThisBreaksApplicationSecurity);
         console.log(this.previewDImg);
-        fileSaver.saveAs(res, name);
+        fileSaver.saveAs(res, fileName);
         this.encrypting = false;
         // this.previewDImg = "../../../assets/aes_done.png";
       },
